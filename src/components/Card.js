@@ -1,6 +1,6 @@
 import './card.css'
 
-const Card = ({card,handleChoice}) => {
+const Card = ({card,handleChoice,flipped}) => {
     
     const handleClick = () => {
         handleChoice(card)
@@ -8,7 +8,7 @@ const Card = ({card,handleChoice}) => {
     
     return ( 
         <div className="card">
-            <div>
+            <div className={flipped ? "flipped" : ""}>
               <img className='front' src={card.src} alt="card front" />
               <img onClick={handleClick} src="./img/Card-Cover-Vector.jpg" alt="card back" className="back" />
             </div>
