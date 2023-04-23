@@ -24,6 +24,9 @@ function App() {
     const shuffledCards = [...cardItems, ...cardItems]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }))
+    
+      setChoiceOne(null)
+    setChoiceTwo(null)
     setCards(shuffledCards)
     setTurns(0)
   }
@@ -41,6 +44,10 @@ function App() {
     setDisable(false)
   }
 
+  useEffect(()=>{
+    shuffleCards()
+  },[])
+
   // compare 2 choice
   useEffect(()=>{
     if(choiceOne&&choiceTwo){
@@ -57,13 +64,10 @@ function App() {
         })
         resetTurn()
       }else{
-        console.log('not match')
         setTimeout(()=>resetTurn(),1000)
       }
     }
   },[choiceOne,choiceTwo])
-
-  console.log(cards)
 
   return (
     <div className="App">
@@ -80,7 +84,7 @@ function App() {
           />
         )}
       </div>
-      <div>{turns}</div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
