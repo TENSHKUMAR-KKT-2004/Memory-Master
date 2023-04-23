@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 const cardItems = [
   { "src": "/img/Book.png",matched:false },
-  { "src": "/img/king-Crown.png",matched:false },
+  { "src": "/img/King-Crown.png",matched:false },
   { "src": "/img/Shield.png",matched:false },
   { "src": "/img/Sword.png",matched:false },
   { "src": "/img/Treasure-Box.png",matched:false },
