@@ -4,12 +4,12 @@ import Card from './components/Card';
 import { useEffect } from 'react';
 
 const cardItems = [
-  { "src": "/img/Book.png" },
-  { "src": "/img/king-Crown.png" },
-  { "src": "/img/Shield.png" },
-  { "src": "/img/Sword.png" },
-  { "src": "/img/Treasure-Box.png" },
-  { "src": "/img/Treasure-Map.png" }
+  { "src": "/img/Book.png",matched:false },
+  { "src": "/img/king-Crown.png",matched:false },
+  { "src": "/img/Shield.png",matched:false },
+  { "src": "/img/Sword.png",matched:false },
+  { "src": "/img/Treasure-Box.png",matched:false },
+  { "src": "/img/Treasure-Map.png",matched:false }
 ]
 
 function App() {
@@ -43,7 +43,15 @@ function App() {
   useEffect(()=>{
     if(choiceOne&&choiceTwo){
       if(choiceOne.src === choiceTwo.src){
-        console.log('equal cards')
+        setCards(prevCards => {
+          return prevCards.map((card) => {
+            if(card.src === choiceOne.src){
+              return {...card,matched:true}
+            }else{
+              return card
+            }
+          })
+        })
         resetTurn()
       }else{
         console.log('not match')
@@ -51,6 +59,8 @@ function App() {
       }
     }
   },[choiceOne,choiceTwo])
+
+  console.log(cards)
 
   return (
     <div className="App">
